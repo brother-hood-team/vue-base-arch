@@ -3,7 +3,7 @@ import VueRouter from "vue-router";
 import Vuex from "vuex";
 import createPersistedState from 'vuex-persistedstate';
 import * as VueRouterSync from "vuex-router-sync";
-import {Applications, ApplicationsStore, IApplication} from "../application";
+import { Applications, ApplicationsStore, IApplication } from "../application";
 
 export interface IStoreBootstrappingConfig {
   applications: Applications;
@@ -16,7 +16,7 @@ export interface IAdministratorStore {
 
 const getModules = (applications: Applications) => {
   return applications.reduce((modules: any, currentValue: IApplication) => {
-    const {moduleName, module} = currentValue.store;
+    const { moduleName, module } = currentValue.store;
     modules[moduleName] = module;
     return modules;
   }, {});
@@ -24,7 +24,7 @@ const getModules = (applications: Applications) => {
 
 const getPersistedStates = (state: any, applications: Applications) => {
   return applications.reduce((persisted: any, currentValue: any) => {
-    const {moduleName} = currentValue.store;
+    const { moduleName } = currentValue.store;
     const persistedValues = currentValue.store.module.persistedState;
 
     if (persistedValues) {
@@ -37,7 +37,7 @@ const getPersistedStates = (state: any, applications: Applications) => {
 
 const getApplications = (applications: Applications) => {
   return applications.map((currentValue: IApplication) => {
-    const {i18n, store, router, ...baseApplication} = currentValue;
+    const { i18n, store, router, ...baseApplication } = currentValue;
     return {
       router: {
         urlPath: router.urlPath,
@@ -71,7 +71,7 @@ export const bootstrap = (config: IStoreBootstrappingConfig) => {
     strict: process.env.NODE_ENV !== "production",
   });
 
-  VueRouterSync.sync(store, config.router, {moduleName: "@router"});
+  VueRouterSync.sync(store, config.router, { moduleName: "@router" });
 
   return store;
 };

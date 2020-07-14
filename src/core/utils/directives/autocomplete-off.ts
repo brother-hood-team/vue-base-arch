@@ -1,6 +1,7 @@
 const autocompleteOff: any = {
-  bind (el: any, binding: any, vNode: any) {
+  bind: function (el: any, binding: any, vNode: any) {
     el.autocomplete = 'off'
+
   }
 };
 

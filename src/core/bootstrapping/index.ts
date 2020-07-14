@@ -8,7 +8,7 @@ import * as I18n from "./i18n";
 import * as Router from "./router";
 import { IRouterBootstrappingPagesConfig } from "./router";
 import * as Store from "./store";
-import { CustomsDirectives, EventBus } from "@/core/utils"
+import { Directives, EventBus } from "@/core/utils/pluggins";
 
 interface IBootstrappingConfig {
   applications: Applications;
@@ -32,7 +32,7 @@ export const bootstrap = (config: IBootstrappingConfig) => {
 
   Vue.use(VueHead);
   Vue.use(Vuebar);
-  Vue.use(CustomsDirectives);
+  Vue.use(Directives);
   Vue.use(EventBus);
 
   return new Vue({
